@@ -1,32 +1,10 @@
-import swal from 'sweetalert';
 
 
-
-const PhoneCart = ({phone}) => {
+const FavoriteCart = ({phone}) => {
     const{id,image,phone_name,brand_name,price,rating}=phone
-    const handleData =()=>{
-      const addFavoritesItems = []
-      const favoriteItem=  JSON.parse(localStorage.getItem('favorite'))
-      if(!favoriteItem){
-        addFavoritesItems.push(phone)
-        localStorage.setItem('favorite', JSON.stringify(addFavoritesItems))
-        swal("Good job!", "You added the product", "success");
-      }else{
-        const isExites= favoriteItem.find(phone=>phone.id===id)
-        if(!isExites){
-          addFavoritesItems.push(...favoriteItem,phone)
-          localStorage.setItem('favorite', JSON.stringify(addFavoritesItems))
-          swal("Good job!", "You added the product", "success");
-        }else{
-          swal("Error", "You already added the product", "error");
-        }
-        
-      }
-    }
-  
     return (
-        <div className="flex  justify-center  items-center h-[80vh]">
-            <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div>
+           <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
   <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
     <img
       src={image}
@@ -44,7 +22,7 @@ const PhoneCart = ({phone}) => {
     
     <a className="inline-block" href="#">
       <button 
-      onClick={handleData}
+     
         className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
         type="button"
       >
@@ -67,9 +45,9 @@ const PhoneCart = ({phone}) => {
       </button>
     </a>
   </div>
-</div>
+</div> 
         </div>
     );
 };
 
-export default PhoneCart;
+export default FavoriteCart;
